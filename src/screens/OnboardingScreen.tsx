@@ -1,8 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, StatusBar } from 'react-native';
 import theme from '../styles/theme';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../types';
 
 const OnboardingScreen = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   return (
     <ImageBackground
       source={require('../../assets/images/onboard.jpeg')} 
@@ -18,7 +21,7 @@ const OnboardingScreen = () => {
         </Text>
 
         <View style={styles.buttonsContainer}>
-          <TouchableOpacity style={[styles.button, styles.signupButton]}>
+          <TouchableOpacity style={[styles.button, styles.signupButton]} onPress={() => navigation.navigate('Role')}>
             <Text style={styles.signupText}>Sign Up</Text>
           </TouchableOpacity>
 

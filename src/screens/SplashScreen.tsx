@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { View, Image, StyleSheet, StatusBar } from 'react-native';
 import { useNavigation, NavigationProp, StackActions } from '@react-navigation/native';
-import { RootStackParamList } from '../../App'; 
+import { RootStackParamList } from '../types'; 
 import theme from '../styles/theme';
 
 const SplashScreen = () => {
