@@ -4,4 +4,6 @@ export type RootStackParamList = {
     Role: undefined;
     DLUpload: undefined;
     UploadSelfie: undefined;
+    NotificationPermission: undefined;
+    LocationPermission: undefined;
 };  

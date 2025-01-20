@@ -7,6 +7,8 @@ import RoleScreen from '../screens/RoleScreen';
 import { RootStackParamList } from '../types';
 import DLUploadScreen from '../screens/DLUploadScreen';
 import UploadSelfieScreen from '../screens/UploadSelfieScreen';
+import NotificationPermissionScreen from '../screens/NotificationPermissionScreen';
+import LocationPermissionScreen from '../screens/LocationPermissionScreen';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -19,6 +21,8 @@ const AppNavigator = () => {
             <Stack.Screen name="Role" component={RoleScreen} />
             <Stack.Screen name="DLUpload" component={DLUploadScreen} />
             <Stack.Screen name="UploadSelfie" component={UploadSelfieScreen} />
+            <Stack.Screen name="NotificationPermission" component={NotificationPermissionScreen} />
+            <Stack.Screen name="LocationPermission" component={LocationPermissionScreen} />
         </Stack.Navigator>
         </NavigationContainer>
     );
