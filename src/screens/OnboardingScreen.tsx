@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     flex: 1, 
   },
   signupButton: {
-    backgroundColor: theme.colors.background,
+    backgroundColor: '#2D2D39',
     marginRight: 10, 
     marginLeft: 10,
   },

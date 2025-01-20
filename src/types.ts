@@ -2,4 +2,6 @@ export type RootStackParamList = {
     Splash: undefined;
     Onboarding: undefined;
     Role: undefined;
+    DLUpload: undefined;
+    UploadSelfie: undefined;
 };  
