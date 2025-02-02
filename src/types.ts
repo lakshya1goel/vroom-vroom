@@ -6,4 +6,5 @@ export type RootStackParamList = {
     UploadSelfie: undefined;
     NotificationPermission: undefined;
     LocationPermission: undefined;
-};  
+    SignUp: undefined;
+};
