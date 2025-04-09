@@ -1,18 +1,66 @@
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import theme from "../../styles/theme";
+import { RootStackParamList } from "../../types";
+import { NavigationProp } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
+import ProgressSteps from '../../components/ProgressSteps';
+import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 
 const SignUpScreen = () => {
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [focusedInput, setFocusedInput] = useState<string | null>(null);
+    const [currentStep, setCurrentStep] = useState(1);
+    const totalSteps = 2;
+
+    const handleNextStep = () => {
+        if (currentStep < totalSteps) {
+            setCurrentStep(currentStep + 1);
+            navigation.navigate('VerifyEmail');
+        }
+    };
+
+    useEffect(() => {
+        GoogleSignin.configure({
+            webClientId: "1062628150817-uf92gvr3222gqo40nok0deb19cdk6mit.apps.googleusercontent.com",
+            offlineAccess: true,
+            forceCodeForRefreshToken: true,
+        });
+    }, []);
+
+    const googleSignIn = async () => {
+        try {
+            await GoogleSignin.hasPlayServices();
+            const userInfo = await GoogleSignin.signIn();
+            console.log(userInfo);
+        } catch (error: any) {
+            if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+                console.log('User cancelled the login flow');
+            } else if (error.code === statusCodes.IN_PROGRESS) {
+                console.log('Signing in');
+            } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+                console.log('Play services not available');
+            } else {
+                console.log('Some other error happened');
+                console.log(error.message);
+                console.log(error.code);
+            }
+        }
+    };
 
     return (
         <View style={styles.container}>
+            <ProgressSteps
+                currentStep={currentStep}
+                totalSteps={totalSteps}
+            />
             <View style={styles.header}>
                 <Text style={styles.title}>Sign Up</Text>
                 <Text style={styles.subtitle}>
@@ -97,11 +145,11 @@ const SignUpScreen = () => {
                     <Text style={styles.link}>Privacy Policy</Text>
                 </Text>
 
-                <TouchableOpacity style={styles.createButton}>
+                <TouchableOpacity style={styles.createButton} onPress={handleNextStep}>
                     <Text style={{ color: theme.colors.textPrimary, textAlign: "center" }}>Create Account</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.googleButton}>
+                <TouchableOpacity style={styles.googleButton} onPress={googleSignIn}>
                     <Image source={require('../../../assets/icons/google.png')} style={styles.googleIcon} />
                     <Text style={styles.googleButtonText}>Continue with Google</Text>
                 </TouchableOpacity>
@@ -184,7 +232,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     terms: {
-        color: theme.colors.textPrimary,
+        color: theme.colors.textLight,
         fontSize: 14,
         textAlign: "center",
     },
