@@ -7,4 +7,5 @@ export type RootStackParamList = {
     NotificationPermission: undefined;
     LocationPermission: undefined;
     SignUp: undefined;
+    VerifyEmail: undefined;
 };
