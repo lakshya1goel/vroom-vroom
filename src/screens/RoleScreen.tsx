@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     passengerButton: {
-        backgroundColor: '#2D2D39',
+        backgroundColor: theme.colors.textField,
         width: '90%',
         padding: 20,
         borderRadius: 20,

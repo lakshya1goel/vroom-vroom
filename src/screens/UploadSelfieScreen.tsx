@@ -2,6 +2,7 @@ import { View, StatusBar, Image, Text, TouchableOpacity, StyleSheet } from "reac
 import theme from "../styles/theme";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../types";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
 const UploadSelfieScreen = () => {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
@@ -16,7 +17,7 @@ const UploadSelfieScreen = () => {
                 <Image source={require('../../assets/icons/selfie.png')} style={styles.icon} />
                 <Text style={styles.buttonText}>Selfie with your vehicle</Text>
             </View>
-            <Image source={require('../../assets/icons/forward_arrow.png')} style={styles.arrow} />
+            <MaterialIcons name="arrow-forward-ios" size={20} color={theme.colors.buttonColor} />
             </View>
         </TouchableOpacity>
         
@@ -26,7 +27,7 @@ const UploadSelfieScreen = () => {
                 <Image source={require('../../assets/icons/selfie.png')} style={styles.icon} />
                 <Text style={styles.buttonText}>Selfie with AKGEC sticker</Text>
             </View>
-            <Image source={require('../../assets/icons/forward_arrow.png')} style={styles.arrow} />
+            <MaterialIcons name="arrow-forward-ios" size={20} color={theme.colors.buttonColor} />
             </View>
         </TouchableOpacity>
         
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     button: {
-        backgroundColor: '#2D2D39',
+        backgroundColor: theme.colors.textField,
         width: '90%',
         padding: 20,
         borderRadius: 20,
@@ -75,11 +76,6 @@ const styles = StyleSheet.create({
         marginRight: 10,
         width: 24,
         height: 24, 
-        resizeMode: 'contain',
-    },
-    arrow: {
-        width: 16,
-        height: 16,
         resizeMode: 'contain',
     },
     buttonText: {

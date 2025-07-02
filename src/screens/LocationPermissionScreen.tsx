@@ -15,7 +15,7 @@ const LocationPermissionScreen = () => {
             <TouchableOpacity style={styles.enableButton}>
                 <Text style={{color: theme.colors.textPrimary, textAlign:"center"}}>Enable location services</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.skipButton}>
+            <TouchableOpacity style={styles.skipButton} onPress={() => navigation.navigate('SignUp')}>
                 <Text style={{color: theme.colors.textPrimary, textAlign:"center"}}>Skip</Text>
             </TouchableOpacity>
         </View>
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     skipButton: {
-        backgroundColor: '#2D2D39',
+        backgroundColor: theme.colors.textField,
         width: '90%',
         padding: 20,
         borderRadius: 20,
