@@ -15,7 +15,7 @@ const App = () => {
       });
 
       messaging().onMessage(async remoteMessage => {
-        console.log('📲 Foreground FCM message:', remoteMessage);
+        console.log('Foreground FCM message:', remoteMessage);
 
         await notifee.displayNotification({
           title: remoteMessage.notification?.title || 'Notification',
